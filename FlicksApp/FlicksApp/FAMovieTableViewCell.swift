@@ -27,6 +27,7 @@ class FAMovieTableViewCell: UITableViewCell {
         descriptionLabel.text = movie.value(forKey: "overview") as? String
         titleLabel.text = movie.value(forKey: "original_title") as? String
         
+        
         if let posterPath = movie["poster_path"] as? String {
             let posterBaseUrl = "http://image.tmdb.org/t/p/w500"
             let posterUrl = URL(string: posterBaseUrl + posterPath)
