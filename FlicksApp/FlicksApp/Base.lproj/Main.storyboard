@@ -203,7 +203,7 @@
         <scene sceneID="nNr-22-iJt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fCV-UO-Wzp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Top Rated" id="RSX-Q5-L3b"/>
+                    <tabBarItem key="tabBarItem" title="Top Rated" image="star-7.png" id="RSX-Q5-L3b"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eIs-KK-qXm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -222,7 +222,7 @@
         <scene sceneID="OGy-q5-47e">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tE1-pV-eKv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Now Playing" id="3CH-J2-T6a"/>
+                    <tabBarItem key="tabBarItem" title="Now Playing" image="film-clap-board.png" id="3CH-J2-T6a"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HPQ-i2-A5a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -238,6 +238,10 @@
             <point key="canvasLocation" x="883.5" y="-1008.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="film-clap-board.png" width="29" height="30"/>
+        <image name="star-7.png" width="30" height="30"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
