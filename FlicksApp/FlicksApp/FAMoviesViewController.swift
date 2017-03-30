@@ -105,6 +105,10 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
         let urlString: String! = MOVIE_URL + movieFilterType! + "?api_key=" + API_KEY;
         loadMovies(urlString: urlString)

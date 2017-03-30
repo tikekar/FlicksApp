@@ -44,7 +44,10 @@ class FAMovieTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        let view = UIView()
+        // 244 193 68
+        view.backgroundColor = UIColor.init(colorLiteralRed: 244/255, green: 193/255, blue: 68/255, alpha: 0.8)
+        self.selectedBackgroundView = view
         // Configure the view for the selected state
     }
 
