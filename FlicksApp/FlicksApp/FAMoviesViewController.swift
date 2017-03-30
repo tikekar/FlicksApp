@@ -61,8 +61,8 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier:
             "MovieCell") as! FAMovieTableViewCell
         let movie = movies[indexPath.row]
-        cell.descriptionLabel.text = movie.value(forKey: "overview") as? String
-        
+        //cell.descriptionLabel.text = movie.value(forKey: "overview") as? String
+        cell.setUI(aMovie: movie)
         return cell
     }
 

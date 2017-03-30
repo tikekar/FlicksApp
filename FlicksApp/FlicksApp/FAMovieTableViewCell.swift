@@ -7,14 +7,38 @@
 //
 
 import UIKit
+import AFNetworking
 
 class FAMovieTableViewCell: UITableViewCell {
 
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var movieImageView: UIImageView!
+    
+    var movie: NSDictionary = [:]
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+    }
+    
+    func setUI(aMovie: NSDictionary) {
+        movie = aMovie
+        descriptionLabel.text = movie.value(forKey: "overview") as? String
+        titleLabel.text = movie.value(forKey: "original_title") as? String
+        
+        if let posterPath = movie["poster_path"] as? String {
+            let posterBaseUrl = "http://image.tmdb.org/t/p/w500"
+            let posterUrl = URL(string: posterBaseUrl + posterPath)
+            
+            movieImageView.setImageWith(posterUrl!)
+        }
+        else {
+            // No poster image. Can either set to nil (no image) or a default movie poster image
+            // that you include as an asset
+            movieImageView.image = nil
+        }
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
