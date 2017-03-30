@@ -151,7 +151,6 @@
 		E7A1EF2B1E8D7F7A00B2D403 /* FlicksApp */ = {
 			isa = PBXGroup;
 			children = (
-				E7A1EF671E8DB3E200B2D403 /* Resources */,
 				E7A1EF2C1E8D7F7A00B2D403 /* AppDelegate.swift */,
 				E7A1EF301E8D7F7A00B2D403 /* Main.storyboard */,
 				E7A1EF361E8D7F7A00B2D403 /* Assets.xcassets */,
@@ -163,6 +162,7 @@
 				E7A1EF611E8D85A400B2D403 /* FAMovieTableViewCell.swift */,
 				E7A1EF631E8D89F300B2D403 /* FAMoviesViewController.swift */,
 				E7A1EF651E8D9BE000B2D403 /* FAMovieDetailsViewController.swift */,
+				E7A1EF671E8DB3E200B2D403 /* Resources */,
 			);
 			path = FlicksApp;
 			sourceTree = "<group>";

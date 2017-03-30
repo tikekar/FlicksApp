@@ -14,8 +14,16 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    let API_KEY: String! = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
+    let MOVIE_URL: String! = "https://api.themoviedb.org/3/movie/"
+    let SEARCH_URL: String! = "https://api.themoviedb.org/3/search/movie"
+    
     var movieFilterType: String? = nil
     var movies: [NSDictionary] = []
+    
+    var errorMessage: String! = "No Movies Found"
+    
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +31,10 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.delegate = self
         tableView.dataSource = self
         
-        let refreshControl = UIRefreshControl()
-        
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
         // add refresh control to table view
         tableView.insertSubview(refreshControl, at: 0)
-        let urlString: String! = "https://api.themoviedb.org/3/movie/" + movieFilterType! + "?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
+        let urlString: String! = MOVIE_URL + movieFilterType! + "?api_key=" + API_KEY;
         loadMovies(urlString: urlString)
         
     }
@@ -53,6 +59,10 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
             with: request as URLRequest,
             completionHandler: { (data, response, error) in
                 SVProgressHUD.dismiss()
+                if(error != nil) {
+                    self.errorMessage = error?.localizedDescription
+                    self.tableView.reloadData()
+                }
                 if let data = data {
                     if let responseDictionary = try! JSONSerialization.jsonObject(
                         with: data, options:[]) as? NSDictionary {
@@ -60,6 +70,10 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
                         self.tableView.reloadData()
                     }
                 }
+                if(self.refreshControl.isRefreshing) {
+                    self.refreshControl.endRefreshing()
+                }
+                
         });
         task.resume()
     }
@@ -69,6 +83,17 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(self.movies.isEmpty) {
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+           // label.center = CGPoint(x: 160, y: 285)
+            label.textAlignment = .center
+            label.text = errorMessage
+            label.numberOfLines = 0
+            tableView.backgroundView = label
+        }
+        else {
+            tableView.backgroundView = nil;
+        }
         return movies.count
     }
     
@@ -81,28 +106,28 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
-        let urlString: String! = "https://api.themoviedb.org/3/movie/" + movieFilterType! + "?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
+        let urlString: String! = MOVIE_URL + movieFilterType! + "?api_key=" + API_KEY;
         loadMovies(urlString: urlString)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        var urlString: String! = "https://api.themoviedb.org/3/search/movie?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&query=" + searchBar.text!
+        var urlString: String! = SEARCH_URL + "?api_key=" + API_KEY + "&query=" + searchBar.text!
         if(searchBar.text == nil) {
-            urlString = "https://api.themoviedb.org/3/movie/" + movieFilterType! + "?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"
+            urlString = MOVIE_URL + movieFilterType! + "?api_key=" + API_KEY;
         }
         loadMovies(urlString: urlString)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        let urlString = "https://api.themoviedb.org/3/movie/" + movieFilterType! + "?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"
+        let urlString: String! = MOVIE_URL + movieFilterType! + "?api_key=" + API_KEY;
         loadMovies(urlString: urlString)
     }
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if(searchText.isEmpty) {
-            let urlString = "https://api.themoviedb.org/3/movie/" + movieFilterType! + "?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"
+           let urlString: String! = MOVIE_URL + movieFilterType! + "?api_key=" + API_KEY;
             loadMovies(urlString: urlString)
         }
        
