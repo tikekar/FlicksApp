@@ -1,0 +1,6 @@
+framework module Pods_FlicksAppTests {
+  umbrella header "Pods-FlicksAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

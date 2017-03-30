@@ -12,7 +12,7 @@
         <!--Top Rated-->
         <scene sceneID="8fj-YQ-nXz">
             <objects>
-                <viewController title="Top Rated" id="xwc-87-FFb" sceneMemberID="viewController">
+                <viewController title="Top Rated" id="xwc-87-FFb" customClass="FATopRatedViewController" customModule="FlicksApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QeN-Dn-umw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="621"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="jB7-aG-CBW" kind="embed" id="jWu-xt-k1C"/>
+                                    <segue destination="jB7-aG-CBW" kind="embed" identifier="Movies View" id="jWu-xt-k1C"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -36,7 +36,7 @@
         <!--Now Playing-->
         <scene sceneID="tsa-BK-H1B">
             <objects>
-                <viewController title="Now Playing" id="J40-6h-1p8" sceneMemberID="viewController">
+                <viewController title="Now Playing" id="J40-6h-1p8" customClass="FANowPlayingViewController" customModule="FlicksApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ycr-87-kBQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,7 +45,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="619"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="jB7-aG-CBW" kind="embed" id="tyo-An-h1d"/>
+                                    <segue destination="jB7-aG-CBW" kind="embed" identifier="Movies View" id="tyo-An-h1d"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -62,7 +62,7 @@
             <objects>
                 <viewController id="jB7-aG-CBW" customClass="FAMoviesViewController" customModule="FlicksApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LtS-Pe-7QS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="619"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="621"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="133" sectionHeaderHeight="28" sectionFooterHeight="28" id="rSM-MA-9yH">
@@ -166,6 +166,6 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="tyo-An-h1d"/>
+        <segue reference="jWu-xt-k1C"/>
     </inferredMetricsTieBreakers>
 </document>
