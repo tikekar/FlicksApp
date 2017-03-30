@@ -20,7 +20,11 @@ class FAMovieDetailsViewController: UIViewController {
     @IBOutlet weak var moviePhotoView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        moviePhotoView.alpha = 0.1
         moviePhotoView.image = image
+        UIView.animate(withDuration: 0.8) {
+            self.moviePhotoView.alpha = 1.0
+        }
         
         overviewLabel.text = movie.value(forKey: "overview") as? String
         titleLabel.text = movie.value(forKey: "original_title") as? String
@@ -37,15 +41,5 @@ class FAMovieDetailsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
