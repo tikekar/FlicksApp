@@ -70,11 +70,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="133" id="rVL-tJ-rZt" customClass="FAMovieTableViewCell" customModule="FlicksApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="133" id="rVL-tJ-rZt" customClass="FAMovieTableViewCell" customModule="FlicksApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="133"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rVL-tJ-rZt" id="ECn-tw-DEj">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="132"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jkf-dQ-Mre">
@@ -101,6 +101,7 @@
                                             <outlet property="descriptionLabel" destination="Jkf-dQ-Mre" id="Yrq-sT-O4l"/>
                                             <outlet property="movieImageView" destination="54P-0B-hqr" id="hcy-d9-NZx"/>
                                             <outlet property="titleLabel" destination="jCJ-8f-ih5" id="qBV-3a-8rH"/>
+                                            <segue destination="ffV-Zw-ZIU" kind="push" identifier="Show Movie Details" id="C67-rz-ff7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -115,6 +116,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xlx-77-ZU6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2273.5" y="-624.5"/>
+        </scene>
+        <!--Movie Details View Controller-->
+        <scene sceneID="uuj-0g-rfB">
+            <objects>
+                <viewController id="ffV-Zw-ZIU" customClass="FAMovieDetailsViewController" customModule="FlicksApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PyW-Nx-FhY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="621"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="4Hs-LK-v4A">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="621"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="KmG-5X-848"/>
+                    <connections>
+                        <outlet property="moviePhotoView" destination="4Hs-LK-v4A" id="jH4-O4-HUC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oxj-f1-vQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2847.5" y="-624.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="MjY-Jw-soo">

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -25,6 +26,7 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func loadMovies() {
+        
         let urlString: String! = "https://api.themoviedb.org/3/movie/" + movieFilterType! + "?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
         let url = URL(string:urlString)
         let request = URLRequest(url: url!)
@@ -33,10 +35,11 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
             delegate:nil,
             delegateQueue:OperationQueue.main
         )
-        
+        SVProgressHUD.show()
         let task : URLSessionDataTask = session.dataTask(
             with: request as URLRequest,
             completionHandler: { (data, response, error) in
+                SVProgressHUD.dismiss()
                 if let data = data {
                     if let responseDictionary = try! JSONSerialization.jsonObject(
                         with: data, options:[]) as? NSDictionary {
@@ -61,21 +64,22 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier:
             "MovieCell") as! FAMovieTableViewCell
         let movie = movies[indexPath.row]
-        //cell.descriptionLabel.text = movie.value(forKey: "overview") as? String
         cell.setUI(aMovie: movie)
         return cell
     }
 
     
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "Show Movie Details") {
+            let destinationViewController = segue.destination as! FAMovieDetailsViewController
+            let cell = sender as! FAMovieTableViewCell
+            destinationViewController.movie = cell.movie
+            destinationViewController.image = cell.movieImageView.image
+        }
     }
-    */
+    
 
 }

@@ -21,6 +21,7 @@
 		E7A1EF601E8D853600B2D403 /* FATopRatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1EF5F1E8D853600B2D403 /* FATopRatedViewController.swift */; };
 		E7A1EF621E8D85A400B2D403 /* FAMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1EF611E8D85A400B2D403 /* FAMovieTableViewCell.swift */; };
 		E7A1EF641E8D89F300B2D403 /* FAMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1EF631E8D89F300B2D403 /* FAMoviesViewController.swift */; };
+		E7A1EF661E8D9BE000B2D403 /* FAMovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1EF651E8D9BE000B2D403 /* FAMovieDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		E7A1EF5F1E8D853600B2D403 /* FATopRatedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FATopRatedViewController.swift; sourceTree = "<group>"; };
 		E7A1EF611E8D85A400B2D403 /* FAMovieTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAMovieTableViewCell.swift; sourceTree = "<group>"; };
 		E7A1EF631E8D89F300B2D403 /* FAMoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAMoviesViewController.swift; sourceTree = "<group>"; };
+		E7A1EF651E8D9BE000B2D403 /* FAMovieDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAMovieDetailsViewController.swift; sourceTree = "<group>"; };
 		EBBAEF7B2A240F78AEE0F3B7 /* Pods_FlicksApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlicksApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -155,6 +157,7 @@
 				E7A1EF5F1E8D853600B2D403 /* FATopRatedViewController.swift */,
 				E7A1EF611E8D85A400B2D403 /* FAMovieTableViewCell.swift */,
 				E7A1EF631E8D89F300B2D403 /* FAMoviesViewController.swift */,
+				E7A1EF651E8D9BE000B2D403 /* FAMovieDetailsViewController.swift */,
 			);
 			path = FlicksApp;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				E7A1EF641E8D89F300B2D403 /* FAMoviesViewController.swift in Sources */,
 				E7A1EF621E8D85A400B2D403 /* FAMovieTableViewCell.swift in Sources */,
 				E7A1EF351E8D7F7A00B2D403 /* FlicksApp.xcdatamodeld in Sources */,
+				E7A1EF661E8D9BE000B2D403 /* FAMovieDetailsViewController.swift in Sources */,
 				E7A1EF601E8D853600B2D403 /* FATopRatedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
