@@ -2,7 +2,7 @@
 
 FlicksApp is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: 6 hours spent in total
+Time spent: 6-8 hours spent in total
 
 ## User Stories
 
@@ -17,17 +17,17 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [x] Add a tab bar for **Now Playing** and **Top Rated** movies.
-- [ ] Implement segmented control to switch between list view and grid view.
 - [x] Add a search bar.
 - [x] All images fade in on the details page.
 - [ ] For the large poster, load the low-res image first, switch to high-res when complete.
-- [ ] Customize the highlight and selection effect of the cell.
-- [ ] Customize the navigation bar.
+- [x] Customize the highlight and selection effect of the cell.
+- [x] Customize the navigation bar.
 
 The following **additional** features are implemented:
 
 - Used Container Views for the Now Playing and Top Rated tabs. This allowed me to create the Tab Bar in storyboard and still share the same FAMoviesViewController passing parameters regarding which list to load.
 - Added SVProgressHUD using cocoapods for showing the simple progress bar
+- Changed the TabBar background color and tint color
 
 ## Video Walkthrough
 
