@@ -45,8 +45,9 @@ class FAMovieDetailsViewController: UIViewController {
         
         movieInfoView.frame = CGRect(x: movieInfoView.frame.origin.x, y: movieInfoView.frame.origin.y, width: movieInfoView.frame.size.width, height: overviewLabel.frame.size.height + 80)
         UIView.animate(withDuration: 0.7) { 
-            self.movieInfoView.frame = CGRect(x: self.movieInfoView.frame.origin.x, y: self.view.frame.size.height - self.movieInfoView.frame.size.height - 120, width: self.movieInfoView.frame.size.width, height: self.movieInfoView.frame.size.height)
-            self.movieInfoFrame = self.movieInfoView.frame
+            self.movieInfoView.frame = CGRect(x: self.movieInfoView.frame.origin.x, y: self.view.frame.size.height - self.movieInfoView.frame.size.height - 100, width: self.movieInfoView.frame.size.width, height: self.movieInfoView.frame.size.height)
+            self.movieInfoFrame = CGRect(x: self.movieInfoView.frame.origin.x, y: self.view.frame.size.height - self.movieInfoView.frame.size.height - 120, width: self.movieInfoView.frame.size.width, height: self.movieInfoView.frame.size.height)
+            
         }
         titleLabel.text = movie.value(forKey: "original_title") as? String
         releaseDate.text = movie.value(forKey: "release_date") as? String
