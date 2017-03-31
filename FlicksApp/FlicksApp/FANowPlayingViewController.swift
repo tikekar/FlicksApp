@@ -2,6 +2,9 @@
 //  FANowPlayingViewController.swift
 //  FlicksApp
 //
+//  TabBar images from iconBeast
+//
+//
 //  Created by Gauri Tikekar on 3/30/17.
 //  Copyright © 2017 Gauri Tikekar. All rights reserved.
 //
@@ -12,7 +15,6 @@ class FANowPlayingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 

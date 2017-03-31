@@ -35,7 +35,6 @@ class FAMovieDetailsViewController: UIViewController {
         UIView.animate(withDuration: 0.8) {
             self.moviePhotoView.alpha = 1.0
         }
-        
     }
     
     func setMovieInfo() {
@@ -58,7 +57,6 @@ class FAMovieDetailsViewController: UIViewController {
             myFormatter.dateFormat = "MMMM, dd YYYY"
             releaseDate.text = myFormatter.string(from: date_)
         }
-
     }
     
     // http: //stackoverflow.com/questions/25503537/swift-uigesturerecogniser-follow-finger
