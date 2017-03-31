@@ -2,7 +2,15 @@
 
 FlicksApp is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: 6-8 hours spent in total
+Time spent: 10 hours spent in total
+
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='https://github.com/tikekar/FlicksApp/blob/master/FlicksApp_walkthrough.gif' title='Video Walkthrough' width='200px' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## User Stories
 
@@ -30,21 +38,14 @@ The following **additional** features are implemented:
 - Added SVProgressHUD using cocoapods for showing the simple progress bar
 - Changed the TabBar background color and tint color
 
-## Video Walkthrough
-
-Here's a walkthrough of implemented user stories:
-
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
-
 ## Notes
 
 Describe any challenges encountered while building the app.
+- Creating panning (drag-drop) effect on movie details page was challenging. 
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2017] [Gauri Tikekar]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
