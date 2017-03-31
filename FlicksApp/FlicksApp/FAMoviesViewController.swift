@@ -43,7 +43,6 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.insertSubview(refreshControl, at: 0)
         
         currentPageNumber = 1;
-       // let urlString: String! = MOVIE_URL + movieFilterType! + "?api_key=" + API_KEY + "&page=1";
         loadMovies()
         
     }
@@ -161,10 +160,9 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if(searchText.isEmpty) {
-            currentPageNumber = 1;
-            loadMovies()
-        }
+        currentPageNumber = 1;
+        loadMovies()
+        
     }
 
     // MARK: - Navigation
