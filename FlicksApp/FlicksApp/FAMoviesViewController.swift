@@ -30,6 +30,7 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.keyboardDismissMode =  UIScrollViewKeyboardDismissMode.onDrag
         
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
         // add refresh control to table view
