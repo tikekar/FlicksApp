@@ -24,8 +24,9 @@ The following **optional** features are implemented:
 - [x] Customize the navigation bar.
 
 The following **additional** features are implemented:
-
+- Infinite Scrolling: Pass page number in the url query and fetch for infinite scroll.
 - Used Container Views for the Now Playing and Top Rated tabs. This allowed me to create the Tab Bar in storyboard and still share the same FAMoviesViewController passing parameters regarding which list to load.
+- In Movie Detials view, added the movie information view's panning and animation. (Panning gesture and animatewithDuration)
 - Added SVProgressHUD using cocoapods for showing the simple progress bar
 - Changed the TabBar background color and tint color
 
