@@ -27,7 +27,6 @@ The following **optional** features are implemented:
 - [x] Add a tab bar for **Now Playing** and **Top Rated** movies.
 - [x] Add a search bar.
 - [x] All images fade in on the details page.
-- [ ] For the large poster, load the low-res image first, switch to high-res when complete.
 - [x] Customize the highlight and selection effect of the cell.
 - [x] Customize the navigation bar.
 
