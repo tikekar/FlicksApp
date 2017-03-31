@@ -14,14 +14,20 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    // Different movie database urls to fetch movies
     let API_KEY: String! = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
     let MOVIE_URL: String! = "https://api.themoviedb.org/3/movie/"
     let SEARCH_URL: String! = "https://api.themoviedb.org/3/search/movie"
     
+    // Set filter type as now_playing or top_rated based on the tab in the tabbar.
     var movieFilterType: String? = nil
-    var movies: [NSDictionary] = []
     
+    // To store the array of movies comming from the server call
+    var movies: NSMutableArray = []
+    
+    // Error message to show when network call fails
     var errorMessage: String! = "No Movies Found"
+    var currentPageNumber: Int! = 1
     
     let refreshControl = UIRefreshControl()
     
@@ -35,8 +41,10 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
         // add refresh control to table view
         tableView.insertSubview(refreshControl, at: 0)
-        let urlString: String! = MOVIE_URL + movieFilterType! + "?api_key=" + API_KEY;
-        loadMovies(urlString: urlString)
+        
+        currentPageNumber = 1;
+       // let urlString: String! = MOVIE_URL + movieFilterType! + "?api_key=" + API_KEY + "&page=1";
+        loadMovies()
         
     }
     
@@ -45,9 +53,17 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
         self.navigationController?.isNavigationBarHidden = true;
     }
     
-    func loadMovies(urlString: String) {
+    func loadMovies() {
         
-        //let urlString: String! = "https://api.themoviedb.org/3/movie/" + movieFilterType! + "?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
+        var urlString: String! = MOVIE_URL + movieFilterType! + "?api_key=" + API_KEY;
+        
+        // If searchbar filter text non empty, then use search api url
+        if(searchBar.text != nil && !(searchBar.text?.isEmpty)!) {
+            urlString = SEARCH_URL + "?api_key=" + API_KEY + "&query=" + searchBar.text!
+        }
+        urlString = urlString + "&page=" + (currentPageNumber as NSNumber).stringValue
+        urlString = urlString.addingPercentEncoding( withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+        errorMessage = "No Movies Found"
         let url = URL(string:urlString)
         let request = URLRequest(url: url!)
         let session = URLSession(
@@ -67,7 +83,17 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
                 if let data = data {
                     if let responseDictionary = try! JSONSerialization.jsonObject(
                         with: data, options:[]) as? NSDictionary {
-                        self.movies = responseDictionary["results"] as! [NSDictionary]
+                        if(self.currentPageNumber == 1) {
+                            if let array_ = responseDictionary["results"] as? NSArray {
+                                self.movies = array_.mutableCopy() as! NSMutableArray
+                            }
+                            else {
+                                self.movies.removeAllObjects()
+                            }
+                        }
+                        else {
+                            self.movies.addObjects(from: (responseDictionary["results"] as! NSArray) as! [Any])
+                        }
                         self.tableView.reloadData()
                     }
                 }
@@ -83,8 +109,12 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: - TableView
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(self.movies.isEmpty) {
+        // When movie view is empty, then show the empty view.
+        // It will show the error from the server call if that is the reason for the empty movie set.
+        if(self.movies.count == 0) {
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
            // label.center = CGPoint(x: 160, y: 285)
             label.textAlignment = .center
@@ -102,7 +132,11 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier:
             "MovieCell") as! FAMovieTableViewCell
         let movie = movies[indexPath.row]
-        cell.setUI(aMovie: movie)
+        cell.setUI(aMovie: movie as! NSDictionary)
+        if(indexPath.row == movies.count - 1) {
+            currentPageNumber = currentPageNumber + 1;
+            loadMovies()
+        }
         return cell
     }
     
@@ -111,35 +145,29 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
-        let urlString: String! = MOVIE_URL + movieFilterType! + "?api_key=" + API_KEY;
-        loadMovies(urlString: urlString)
+        currentPageNumber = 1;
+        loadMovies()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        var urlString: String! = SEARCH_URL + "?api_key=" + API_KEY + "&query=" + searchBar.text!
-        if(searchBar.text == nil) {
-            urlString = MOVIE_URL + movieFilterType! + "?api_key=" + API_KEY;
-        }
-        loadMovies(urlString: urlString)
+        currentPageNumber = 1;
+        loadMovies()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        let urlString: String! = MOVIE_URL + movieFilterType! + "?api_key=" + API_KEY;
-        loadMovies(urlString: urlString)
+        currentPageNumber = 1;
+        loadMovies()
     }
-    
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if(searchText.isEmpty) {
-           let urlString: String! = MOVIE_URL + movieFilterType! + "?api_key=" + API_KEY;
-            loadMovies(urlString: urlString)
+            currentPageNumber = 1;
+            loadMovies()
         }
-       
     }
 
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "Show Movie Details") {
@@ -149,6 +177,5 @@ class FAMoviesViewController: UIViewController, UITableViewDataSource, UITableVi
             destinationViewController.image = cell.movieImageView.image
         }
     }
-    
 
 }

@@ -15,6 +15,7 @@ class FAMovieTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var movieImageView: UIImageView!
     
+    // TODO: Create Movie object in Model and use that instead of accessing dictionary directly
     var movie: NSDictionary = [:]
     
     override func awakeFromNib() {
