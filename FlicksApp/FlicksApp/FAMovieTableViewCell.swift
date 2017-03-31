@@ -30,7 +30,7 @@ class FAMovieTableViewCell: UITableViewCell {
         
         
         if let posterPath = movie["poster_path"] as? String {
-            let posterBaseUrl = "http://image.tmdb.org/t/p/w500"
+            let posterBaseUrl = "https://image.tmdb.org/t/p/original" 
             let posterUrl = URL(string: posterBaseUrl + posterPath)
             
             movieImageView.setImageWith(posterUrl!)
