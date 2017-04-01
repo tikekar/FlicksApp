@@ -28,7 +28,7 @@ The following **optional** features are implemented:
 - [x] Add a search bar.
 - [x] All images fade in on the details page.
 - [x] Customize the highlight and selection effect of the cell.
-- [x] Customize the navigation bar.
+- [x] Customize the navigation bar and TabBar colors through AppDelegate.
 
 The following **additional** features are implemented:
 - Infinite Scrolling: Pass page number in the url query and fetch for infinite scroll.
