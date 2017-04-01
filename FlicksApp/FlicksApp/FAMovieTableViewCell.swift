@@ -25,10 +25,14 @@ class FAMovieTableViewCell: UITableViewCell {
     
     func setUI(aMovie: NSDictionary) {
         movie = aMovie
-        descriptionLabel.text = movie.value(forKey: "overview") as? String
+        descriptionLabel.text = movie.value(forKey: "original_title") as? String
         titleLabel.text = movie.value(forKey: "original_title") as? String
-        
-        
+        if let description_ = movie["overview"] as? String {
+            if(!description_.isEmpty) {
+                descriptionLabel.text = description_
+            }
+        }
+                
         if let posterPath = movie["poster_path"] as? String {
             let posterBaseUrl = "https://image.tmdb.org/t/p/original" 
             let posterUrl = URL(string: posterBaseUrl + posterPath)
@@ -47,7 +51,7 @@ class FAMovieTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         let view = UIView()
         // 244 193 68
-        view.backgroundColor = UIColor.groupTableViewBackground //UIColor.init(colorLiteralRed: 244/255, green: 193/255, blue: 68/255, alpha: 0.8)
+        view.backgroundColor = UIColor.darkGray
         self.selectedBackgroundView = view
         // Configure the view for the selected state
     }
