@@ -10,6 +10,10 @@ Here's a walkthrough of implemented user stories:
 
 <img src='https://github.com/tikekar/FlicksApp/blob/master/FlicksApp_walkthrough.gif' title='Video Walkthrough' width='200px' alt='Video Walkthrough' />
 
+#### Error screen shown when no network or when REST call comes back with error:
+<img src='https://github.com/tikekar/FlicksApp/blob/master/Simulator%20Screen%20Shot%20Apr%202%2C%202017%2C%201.36.50%20PM.png' title='Network Error Screenshot' width='200px' alt='' />
+
+
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## User Stories
@@ -19,7 +23,7 @@ The following **required** functionality is completed:
 - [x] User can view a list of movies currently playing in theaters. Poster images load asynchronously.
 - [x] User can view movie details by tapping on a cell.
 - [x] User sees loading state while waiting for the API.
-- [x] User sees an error message when there is a network error.
+- [x] User sees an error message when there is a network error.(Note: The UI is as per shown in the screenshot. I am not using the alertview, but it uses the tableView's background view to show the error message coming from REST api call when there is no data to show.)
 - [x] User can pull to refresh the movie list.
 
 The following **optional** features are implemented:
